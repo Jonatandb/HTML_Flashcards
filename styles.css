@@ -4,7 +4,8 @@
   --dark: #2d2140;
   --light: #fff;
   --main-color: rgb(255, 20, 157);
-  --main-color-dark: rgb(225, 13, 167);
+  --main-color-dark: rgb(182, 10, 136);
+  --secondary-color: rgb(154, 205, 50);
 }
 
 * {
@@ -33,7 +34,7 @@ body {
 
 button {
   border: none;
-  outline: none;
+  user-select: none;
   cursor: pointer;
   color: var(--white);
   transition: all 0.3s ease;
@@ -55,7 +56,7 @@ button {
 }
 
 .card {
-  border: 1px solid var(--light);
+  border: 2px solid var(--secondary-color);
   padding: 16px 20px 10px;
   width: 31%;
   border-radius: 10px;
@@ -115,7 +116,7 @@ button {
   padding: 35px 30px;
   border-radius: 10px;
   box-shadow: 0 5px 250px var(--main-color);
-  border: 1px solid var(--light)
+  border: 2px solid var(--secondary-color);
 }
 
 .modal h2 {
@@ -136,12 +137,10 @@ button {
 }
 
 #close-btn {
-  font-size: 22px;
+  font-size: 14px;
   background-color: var(--main-color);
   padding: 10px 14px;
   border-radius: 50%;
-  cursor: pointer;
-  transform: all 0.3s ease;
 }
 
 label {
@@ -176,4 +175,31 @@ textarea:focus {
 #close-btn:hover,
 .show-hide-btn:hover {
   background-color: var(--main-color-dark);
+}
+
+.card:hover {
+  background-color: var(--dark);
+}
+
+@media screen and (max-width: 800px) {
+
+  body {
+    padding: 10px 0 30px;
+  }
+
+  .card {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 572px) {
+  body {
+    font-size: 14px;
+    overflow-y: scroll;
+  }
+
+  .card {
+    width: 100%;
+  }
+
 }
