@@ -132,8 +132,12 @@ button {
   margin-bottom: 24px;
 }
 
-#error {
+.visible {
   color: var(--main-color);
+}
+
+.hidden {
+  color: transparent;
 }
 
 #close-btn {
