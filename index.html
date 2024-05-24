@@ -15,7 +15,6 @@
     <div class="add-card-con">
       <button id="add-card" title="Add New Card">Add New Card</button>
     </div>
-
     <div class="cards-list">
       <div class="card">
         <p class="que-div">Question</p>
@@ -67,26 +66,26 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="modal hide" id="add-card-modal">
-      <h2>Add Flashcard</h2>
-      <div class="wrapper">
-        <div class="error-con">
-          <span class="hide" id="error">
-            Input fields cannot be empty!
-          </span>
-        </div>
-        <button title="Close" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+  <div class="modal hide" id="add-card-modal">
+    <h2>Add Flashcard</h2>
+    <div class="wrapper">
+      <div class="error-con">
+        <span class="hide" id="error">
+          Input fields cannot be empty!
+        </span>
       </div>
-
-      <label for="question">Question:</label>
-      <textarea id="question" class="input" placeholder="Type the question here..." rows="3"></textarea>
-      <label for="answer">Answer:</label>
-      <textarea id="answer" class="input" placeholder="Type the answer here..." rows="3"></textarea>
-      <button id="save-btn" title="Save">Save</button>
+      <button title="Close" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
     </div>
 
+    <label for="question">Question:</label>
+    <textarea id="question" class="input" placeholder="Type the question here..." rows="3"></textarea>
+    <label for="answer">Answer:</label>
+    <textarea id="answer" class="input" placeholder="Type the answer here..." rows="3"></textarea>
+    <button id="save-btn" title="Save">Save</button>
   </div>
+
   <script src="scripts.js"></script>
 </body>
 
