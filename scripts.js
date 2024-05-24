@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-const cardList = document.getElementById("cards-list");
+const cardsList = document.querySelector(".cards-list");
 const addQuestionModal = document.getElementById("add-card-modal");
 const saveBtn = document.getElementById("save-btn");
 const addQuestionBtn = document.getElementById("add-card");
@@ -56,5 +56,47 @@ saveBtn.addEventListener("click", () => {
   localStorage.setItem('flashcards', JSON.stringify(flashcards));
   container.classList.remove('hide');
   addQuestionModal.classList.add('hide');
-  //renderFlashcards();
+  renderFlashcards();
 })
+
+function renderFlashcards() {
+  const flashCards = JSON.parse(localStorage.getItem('flashcards')) || [];
+  cardsList.innerHTML = "";
+  flashCards.forEach(card => {
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+    cardDiv.innerHTML = `
+      <p class="question-text">${card.question}</p>
+      <p class="answer-text hidden">${card.answer}</p>
+      <button class="show-hide-btn" title="Show/Hide">Show/Hide</button>
+      <div class="btns-con">
+        <button class="edit" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="delete" title="Delete"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    `;
+
+    cardDiv.setAttribute('data-id', card.id);
+    const answerText = cardDiv.querySelector('.answer-text');
+    const showHideBtn = cardDiv.querySelector('.show-hide-btn');
+    const editBtn = cardDiv.querySelector('.edit');
+    const deleteBtn = cardDiv.querySelector('.delete');
+    showHideBtn.addEventListener('click', () => {
+      answerText.classList.toggle('hidden');
+    });
+
+    editBtn.addEventListener('click', () => {
+      isEditing = true;
+      addQuestionModal.classList.remove('hide');
+      container.classList.add('hide');
+      //modifyCard(cardDiv);
+    });
+
+    deleteBtn.addEventListener('click', () => {
+      //deleteCard(cardDiv);
+    });
+
+    cardsList.appendChild(cardDiv);
+  });
+}
+
+renderFlashcards()
