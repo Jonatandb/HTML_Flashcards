@@ -9,7 +9,7 @@ const answer = document.getElementById("answer");
 const errorMessage = document.getElementById("error");
 
 let isEditing = false;
-let originalId = null;
+let cardId = null;
 let flashcards = JSON.parse(localStorage.getItem('flashcards')) || [];
 
 addQuestionBtn.addEventListener("click", () => {
@@ -38,8 +38,9 @@ saveBtn.addEventListener("click", () => {
   }
   errorMessage.classList.add("hidden");
   if(isEditing) {
+
     flashcards = flashcards.map(card => {
-      if(card.id === originalId) {
+      if(card.id === cardId) {
         card.question = questionText;
         card.answer = answerText;
       }
@@ -88,15 +89,31 @@ function renderFlashcards() {
       isEditing = true;
       addQuestionModal.classList.remove('hide');
       container.classList.add('hide');
-      //modifyCard(cardDiv);
+      modifyCard(cardDiv);
     });
 
     deleteBtn.addEventListener('click', () => {
-      //deleteCard(cardDiv);
+      modifyCard(cardDiv);
     });
 
     cardsList.appendChild(cardDiv);
   });
 }
 
-renderFlashcards()
+function modifyCard(cardDiv) {
+  cardId = Number(cardDiv.attributes['data-id'].value);
+  if(isEditing) {
+    question.value = cardDiv.querySelector('.question-text').textContent;
+    answer.value = cardDiv.querySelector('.answer-text').textContent;
+    question.focus();
+  } else {
+    if(confirm("Are you sure you want to delete this card?")) {
+      flashcards = flashcards.filter(card => card.id !== cardId);
+      localStorage.setItem('flashcards', JSON.stringify(flashcards));
+      renderFlashcards();
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', renderFlashcards);
+
