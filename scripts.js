@@ -115,5 +115,14 @@ function modifyCard(cardDiv) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', renderFlashcards);
+// Prevent zoom on double tap
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+  let now = (new Date()).getTime();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
 
+document.addEventListener('DOMContentLoaded', renderFlashcards);
