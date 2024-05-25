@@ -1,12 +1,12 @@
 
-  # Flashcard App 🧠
+  # Flashcards App 🧠
 
   ---
 
 
   ## 👓 Live demo
 
-  [Click here to run online](http://jonatandb.dev.ar/HTML_Flashcards/)
+  [Try the online version by clicking here](http://jonatandb.dev.ar/HTML_Flashcards/)
 
 
   ---
