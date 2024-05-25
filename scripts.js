@@ -18,6 +18,7 @@ addQuestionBtn.addEventListener("click", () => {
   question.value = "";
   question.focus();
   answer.value = "";
+  setModalTitle("Add Flashcard");
 });
 
 closeBtn.addEventListener("click", () => {
@@ -38,7 +39,6 @@ saveBtn.addEventListener("click", () => {
   }
   errorMessage.classList.add("hidden");
   if(isEditing) {
-
     flashcards = flashcards.map(card => {
       if(card.id === cardId) {
         card.question = questionText;
@@ -86,6 +86,7 @@ function renderFlashcards() {
     });
 
     editBtn.addEventListener('click', () => {
+      setModalTitle("Edit Flashcard");
       isEditing = true;
       addQuestionModal.classList.remove('hide');
       container.classList.add('hide');
@@ -124,5 +125,10 @@ document.addEventListener('touchend', function (event) {
   }
   lastTouchEnd = now;
 }, false);
+
+function setModalTitle(title) {
+  const modalTitle = addQuestionModal.querySelector('h2');
+  modalTitle.textContent = title;
+}
 
 document.addEventListener('DOMContentLoaded', renderFlashcards);
